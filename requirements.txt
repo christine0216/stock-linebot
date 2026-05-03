@@ -9,3 +9,4 @@ requests
 python-dotenv
 pyngrok
 urllib3
+gunicorn
