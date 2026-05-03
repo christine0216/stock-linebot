@@ -10,6 +10,7 @@ from stock import get_stock_reply, get_news
 from dotenv import load_dotenv
 import os
 from stock import get_stock_reply
+from linebot.models import FollowEvent
 
 load_dotenv()
 
@@ -177,6 +178,22 @@ def handle_message(event):
     except Exception as e:
         print(f"錯誤：{e}")
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"錯誤：{str(e)}"))
-
+@handler.add(FollowEvent)
+def handle_follow(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(
+            text=(
+                "👋 歡迎使用股市查詢 Bot！\n"
+                "══════════════\n"
+                "📌 使用方式：\n"
+                "請輸入想查詢的股票代號\n"
+                "例如：2330（台積電）\n"
+                "　　　0050（台灣50）\n"
+                "══════════════\n"
+                "輸入代號後將自動跳出查詢功能 👇"
+            )
+        )
+    )
 if __name__ == "__main__":
     app.run(port=5000)
