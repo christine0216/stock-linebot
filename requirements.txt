@@ -1,0 +1,11 @@
+flask
+line-bot-sdk
+yfinance
+pandas
+matplotlib
+mplfinance
+beautifulsoup4
+requests
+python-dotenv
+pyngrok
+urllib3
